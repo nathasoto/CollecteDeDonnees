@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CollecteDeDonnees
 {
-    internal class LineDonne
+    public class LineDonne
     {
 
         public string id { get; set; }

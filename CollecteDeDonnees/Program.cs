@@ -19,7 +19,7 @@ namespace CollecteDeDonnees
 
         static void Main(string[] args)
         {
-            Donnes webData = new Donnes();
+            DonneLibrary webData = new DonneLibrary();
 
             foreach (LineDonne lineDonne in webData.GetWebDonne())
             {

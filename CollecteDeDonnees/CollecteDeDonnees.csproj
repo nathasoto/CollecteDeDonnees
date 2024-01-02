@@ -49,10 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Donnes.cs" />
-    <Compile Include="DonnesB.cs" />
-    <Compile Include="IDonnesB.cs" />
-    <Compile Include="LineDonne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
