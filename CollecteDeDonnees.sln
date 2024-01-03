@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollecteDeDonnees", "Collec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDonnesAPI", "LibraryDonnesAPI\LibraryDonnesAPI.csproj", "{544F0DE7-234B-4F1D-BEE6-4E98D46AE416}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibraryDonnesAPI", "TestLibraryDonnesAPI\TestLibraryDonnesAPI.csproj", "{CBA77F87-430C-459D-961F-35D33F0835A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{544F0DE7-234B-4F1D-BEE6-4E98D46AE416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{544F0DE7-234B-4F1D-BEE6-4E98D46AE416}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{544F0DE7-234B-4F1D-BEE6-4E98D46AE416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA77F87-430C-459D-961F-35D33F0835A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA77F87-430C-459D-961F-35D33F0835A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA77F87-430C-459D-961F-35D33F0835A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA77F87-430C-459D-961F-35D33F0835A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
