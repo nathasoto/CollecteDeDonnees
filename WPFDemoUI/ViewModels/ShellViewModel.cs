@@ -1,14 +1,14 @@
-﻿using CollecteDeDonnees;
+﻿using LibraryDonnesAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryDonnesAPI
+namespace WPFDemoUI.ViewModels
 {
-    internal interface ILibraryB
+    public class ShellViewModel
     {
-        List<LineDonne> GetWebDonne();
+        
     }
 }

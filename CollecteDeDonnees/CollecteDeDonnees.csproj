@@ -61,10 +61,6 @@
       <Project>{544f0de7-234b-4f1d-bee6-4e98d46ae416}</Project>
       <Name>LibraryDonnesAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestLibraryDonnesAPI\TestLibraryDonnesAPI.csproj">
-      <Project>{cba77f87-430c-459d-961f-35d33f0835a4}</Project>
-      <Name>TestLibraryDonnesAPI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

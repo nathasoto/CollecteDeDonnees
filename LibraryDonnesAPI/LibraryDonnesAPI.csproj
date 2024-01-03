@@ -45,10 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DonneLibrary.cs" />
-    <Compile Include="ILibraryB.cs" />
-    <Compile Include="LibraryB.cs" />
+    <Compile Include="IRequest.cs" />
     <Compile Include="LineDonne.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

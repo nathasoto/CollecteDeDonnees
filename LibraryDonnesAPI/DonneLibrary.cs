@@ -13,24 +13,26 @@ namespace LibraryDonnesAPI
 {
     public class DonneLibrary
     {
+        private IRequest _request;
+        private String URL = "http://data.mobilites-m.fr/api/linesNear/json?x=5.731358767949209&y=45.18457681950622&dist=400&details=true";
+
+        //constructor class main production
+        public DonneLibrary()
+        {
+            _request = new Request();
+        }
+        //constructor class fake test
+        public DonneLibrary(IRequest request)
+        {
+            _request = request;
+        }
+
         public List<LineDonne> GetWebDonne()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 |
-            SecurityProtocolType.Tls;
 
-            // Initialize the WebRequest.
-            WebRequest myRequest = WebRequest.Create("http://data.mobilites-m.fr/api/linesNear/json?x=5.731358767949209&y=45.18457681950622&dist=400&details=true");
+            String json_string = _request.doRequest(URL);
 
-
-            //Return the response.
-            Stream myResponse = myRequest.GetResponse().GetResponseStream();
-
-            StreamReader objReader = new StreamReader(myResponse);
-
-            String json_string = objReader.ReadToEnd();
-
-
-            List<LineDonne> data = (List<LineDonne>)JsonConvert.DeserializeObject<IList<LineDonne>>(json_string);
+            List <LineDonne> data = JsonConvert.DeserializeObject<List<LineDonne>>(json_string);
 
             return data;
 

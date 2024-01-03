@@ -1,24 +1,23 @@
-﻿using CollecteDeDonnees;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryDonnesAPI 
+namespace LibraryDonnesAPI
 {
-    internal class LibraryB : ILibraryB
+    public class Request:IRequest
     {
-        public List<LineDonne> GetWebDonne()
+        public String doRequest(String URL)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 |
             SecurityProtocolType.Tls;
 
             // Initialize the WebRequest.
-            WebRequest myRequest = WebRequest.Create("http://data.mobilites-m.fr/api/linesNear/json?x=5.731358767949209&y=45.18457681950622&dist=400&details=true");
+            WebRequest myRequest = WebRequest.Create(URL);
 
 
             //Return the response.
@@ -28,12 +27,9 @@ namespace LibraryDonnesAPI
 
             String json_string = objReader.ReadToEnd();
 
-
-            List<LineDonne> data = (List<LineDonne>)JsonConvert.DeserializeObject<IList<LineDonne>>(json_string);
-
-            return data;
-
-
+            return json_string;
         }
+
+           
     }
 }
