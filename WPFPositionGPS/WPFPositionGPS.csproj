@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\ViewModelLinneDonne.cs" />
     <Compile Include="ViewModels\ViewModelPositionGPS.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Capture d%27écran Metro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryDonnesAPI\LibraryDonnesAPI.csproj">
+      <Project>{544f0de7-234b-4f1d-bee6-4e98d46ae416}</Project>
+      <Name>LibraryDonnesAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

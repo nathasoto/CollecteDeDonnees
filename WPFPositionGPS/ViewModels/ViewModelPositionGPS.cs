@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Command;
+using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
 using WPFPositionGPS.Models;
 
 namespace WPFPositionGPS.ViewModels
@@ -51,9 +55,34 @@ namespace WPFPositionGPS.ViewModels
             }
         }
 
+        private Visibility _visibility = Visibility.Hidden;
+
+        public Visibility Visibility
+        {
+            get => _visibility;
+            set { if (_visibility != value)
+                {
+                    _visibility = value;
+                    OnPropertyChange("Visibility");
+                }
+            }
+        }
+
+        private ICommand _findCommand;
+        public ICommand FindCommand
+        {
+            get => _findCommand ?? (_findCommand = new RelayCommand(o => 
+            {
+                Visibility = Visibility.Visible;
+                OnPropertyChange("Information");
+            },
+                o => true));
+            set => _findCommand = value;
+        }
+
         public string Information
         {
-            get { return Latitude + " " + Longitude + " " + Rayon; }
+            get { return Latitude + " - " + Longitude + " - " + Rayon; }
         }
 
         public ViewModelPositionGPS()

@@ -30,10 +30,10 @@
         <Label Content="Rayon" HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Center"/>
         <TextBox HorizontalAlignment="Left" Margin="195,258,0,0" TextWrapping="Wrap" Text="{Binding Rayon, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
 
-        <TextBlock x:Name="TextInformation" HorizontalAlignment="Left" Margin="173,60,0,0" TextWrapping="Wrap" Text="{Binding Information}" VerticalAlignment="Top" Visibility="Hidden"/>
-        
-        
-        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="461,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Click="Button_Click"/>
+        <TextBlock x:Name="TextInformation" HorizontalAlignment="Left" Margin="173,60,0,0" TextWrapping="Wrap" Text="{Binding Information}" VerticalAlignment="Top" Visibility="{Binding Visibility}"/>
+
+
+        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="461,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Command="{Binding FindCommand}"/>
 
         
 

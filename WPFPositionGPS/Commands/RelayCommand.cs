@@ -8,10 +8,11 @@ using System.Windows.Input;
 
 namespace Command
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _toExecute;
         private Func<object, bool> _canExecute;
+
         public RelayCommand(Action<object> toExcecute, Func<object, bool> canExecute = null)
         {
             _toExecute = toExcecute;
@@ -19,14 +20,21 @@ namespace Command
         }
 
         public event EventHandler CanExecuteChanged;
+
         public bool CanExecute(object parameter)
         {
-            return _canExecute(parameter);
+            if (_canExecute != null)
+            {
+                return _canExecute(parameter);
+            }
+
+            return true;
         }
 
         public void Execute(object parameter)
         {
             _toExecute(parameter);
         }
+
     }
 }
