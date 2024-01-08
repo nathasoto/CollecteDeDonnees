@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CollecteDeDonnees;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +24,16 @@ namespace WPFPositionGPS
     public partial class MainWindow : Window
     {
         private readonly ViewModelPositionGPS _viewModel;
+        private ObservableCollection<LineDonne> _lines;
+
         public MainWindow()
         {
             InitializeComponent();
             _viewModel = new ViewModelPositionGPS();
             // The DataContext serves as the starting point of Binding Paths
             DataContext = _viewModel;
+            _lines = new ObservableCollection<LineDonne>();
+
         }
 
      

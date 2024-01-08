@@ -19,7 +19,7 @@
             <ImageBrush Stretch="UniformToFill" TileMode="None"/>
         </Grid.Background>
 
-        
+        <TextBlock x:Name="TextLines" HorizontalAlignment="Left" Margin="173,60,0,0" TextWrapping="Wrap" Text="{Binding Lines}" VerticalAlignment="Top" Visibility="{Binding Visibility}"/>
 
         <Label Content="Latitude" HorizontalAlignment="Left" Margin="109,149,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="195,162,0,0" TextWrapping="Wrap" Text="{Binding Latitude, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
@@ -33,9 +33,18 @@
         <TextBlock x:Name="TextInformation" HorizontalAlignment="Left" Margin="173,60,0,0" TextWrapping="Wrap" Text="{Binding Information}" VerticalAlignment="Top" Visibility="{Binding Visibility}"/>
 
 
-        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="461,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Command="{Binding FindCommand}"/>
+        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="255,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Command="{Binding FindLines}"/>
+
+        <ListView d:ItemsSource="{Binding Information}" Margin="400,162,92,173"  Name ="lvDataList">
+            <ListView.View >
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         
+
 
 
     </Grid>

@@ -1,15 +1,30 @@
-﻿using Command;
+﻿using CollecteDeDonnees;
+using Command;
+using LibraryDonnesAPI;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Shapes;
 using WPFPositionGPS.Models;
 
 namespace WPFPositionGPS.ViewModels
 {
+   
+
     public class ViewModelPositionGPS : INotifyPropertyChanged
     {
-        private  PositionGPS positionGPS;
+        private PositionGPS positionGPS;
+        
+        private DonneLibrary donneLibrary = new DonneLibrary();
+
+        private ObservableCollection<LineDonne> lines = new ObservableCollection<LineDonne>();
+
+
+        public ObservableCollection<LineDonne> Lines { get; set; }
+
 
         public double Latitude
         {
@@ -60,7 +75,9 @@ namespace WPFPositionGPS.ViewModels
         public Visibility Visibility
         {
             get => _visibility;
-            set { if (_visibility != value)
+            set
+            {
+                if (_visibility != value)
                 {
                     _visibility = value;
                     OnPropertyChange("Visibility");
@@ -68,22 +85,45 @@ namespace WPFPositionGPS.ViewModels
             }
         }
 
-        private ICommand _findCommand;
-        public ICommand FindCommand
+        
+
+        private ICommand _findLines;
+        
+        public ICommand FindLines
         {
-            get => _findCommand ?? (_findCommand = new RelayCommand(o => 
+            get => _findLines ?? (_findLines = new RelayCommand(o =>
             {
+                GetCoordinates();
                 Visibility = Visibility.Visible;
                 OnPropertyChange("Information");
             },
                 o => true));
-            set => _findCommand = value;
+            set => _findLines = value;
         }
 
         public string Information
         {
-            get { return Latitude + " - " + Longitude + " - " + Rayon; }
+            get { return Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture) + " - " + Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) + " - " + Rayon; }
         }
+
+        private void GetCoordinates()
+        {
+            List<LineDonne> lineDonnes = donneLibrary.FindLines(Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Rayon.ToString());
+
+            foreach (LineDonne lineDonne in lineDonnes)
+            {
+                lines.Add(lineDonne);
+                Console.WriteLine(lines.Count);
+            }
+        }
+        
+        public string LinesBus
+        {
+            get{
+                return Lines.ToString();
+            }
+        }
+
 
         public ViewModelPositionGPS()
         {
@@ -94,7 +134,7 @@ namespace WPFPositionGPS.ViewModels
                 Rayon = 400,
 
             };
-           
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
