@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using WPFPositionGPS.Models;
@@ -17,14 +19,13 @@ namespace WPFPositionGPS.ViewModels
     public class ViewModelPositionGPS : INotifyPropertyChanged
     {
         private PositionGPS positionGPS;
-        
         private DonneLibrary donneLibrary = new DonneLibrary();
 
-        private ObservableCollection<LineDonne> lines = new ObservableCollection<LineDonne>();
-
-
-        public ObservableCollection<LineDonne> Lines { get; set; }
-
+        private ObservableCollection<LineDonne> _lines = new ObservableCollection<LineDonne>();
+        public ObservableCollection<LineDonne> Lines { 
+            get { return _lines; }
+            set { _lines = value; } 
+        }
 
         public double Latitude
         {
@@ -93,6 +94,7 @@ namespace WPFPositionGPS.ViewModels
         {
             get => _findLines ?? (_findLines = new RelayCommand(o =>
             {
+               
                 GetCoordinates();
                 Visibility = Visibility.Visible;
                 OnPropertyChange("Information");
@@ -108,30 +110,24 @@ namespace WPFPositionGPS.ViewModels
 
         private void GetCoordinates()
         {
+           
             List<LineDonne> lineDonnes = donneLibrary.FindLines(Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Rayon.ToString());
-
+            
             foreach (LineDonne lineDonne in lineDonnes)
             {
-                lines.Add(lineDonne);
-                Console.WriteLine(lines.Count);
+                
+                _lines.Add(lineDonne);
+                Console.WriteLine(_lines.Count) ;
             }
-        }
-        
-        public string LinesBus
-        {
-            get{
-                return Lines.ToString();
-            }
-        }
 
+
+        }
 
         public ViewModelPositionGPS()
         {
             positionGPS = new PositionGPS
             {
-                Latitude = 5.731358767949209,
-                Longitud = 45.18457681950622,
-                Rayon = 400,
+                
 
             };
 

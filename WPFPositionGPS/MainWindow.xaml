@@ -35,16 +35,21 @@
 
         <Button Content="Rechercher" HorizontalAlignment="Left" Margin="255,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Command="{Binding FindLines}"/>
 
-        <ListView d:ItemsSource="{Binding Information}" Margin="400,162,92,173"  Name ="lvDataList">
-            <ListView.View >
+
+        <ListView Name="listBus" ItemsSource="{Binding Lines}" Grid.Row="0" Grid.ColumnSpan="10" Margin="0,393,0,61" RenderTransformOrigin="0.5,0.5">
+            <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Header="id" Width="70" DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="longitude" Width="100" DisplayMemberBinding="{Binding lon}" />
+                    <GridViewColumn Header="latitude" Width="100" DisplayMemberBinding="{Binding lat}" />
+                    <GridViewColumn Header="zone" Width="100" DisplayMemberBinding="{Binding zone}" />
+                    <GridViewColumn Header="lignes" Width="100" DisplayMemberBinding="{Binding lines}" />
+
                 </GridView>
             </ListView.View>
+
         </ListView>
-
-        
-
 
 
     </Grid>

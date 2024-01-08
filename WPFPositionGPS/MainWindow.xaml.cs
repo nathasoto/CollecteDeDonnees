@@ -24,7 +24,6 @@ namespace WPFPositionGPS
     public partial class MainWindow : Window
     {
         private readonly ViewModelPositionGPS _viewModel;
-        private ObservableCollection<LineDonne> _lines;
 
         public MainWindow()
         {
@@ -32,7 +31,7 @@ namespace WPFPositionGPS
             _viewModel = new ViewModelPositionGPS();
             // The DataContext serves as the starting point of Binding Paths
             DataContext = _viewModel;
-            _lines = new ObservableCollection<LineDonne>();
+            
 
         }
 
