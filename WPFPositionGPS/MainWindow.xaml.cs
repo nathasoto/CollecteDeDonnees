@@ -29,5 +29,14 @@ namespace WPFPositionGPS
             // The DataContext serves as the starting point of Binding Paths
             DataContext = _viewModel;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //this.Hide();
+            TextInformation.Visibility = Visibility.Visible;
+
+
+
+        }
     }
 }

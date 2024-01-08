@@ -1,35 +1,34 @@
 ﻿using System.ComponentModel;
+using WPFPositionGPS.Models;
 
 namespace WPFPositionGPS.ViewModels
 {
     public class ViewModelPositionGPS : INotifyPropertyChanged
     {
-        private float _latitude;
-        private float _lonitude;
-        private int _rayon;
+        private  PositionGPS positionGPS;
 
-        public float Latitude
+        public double Latitude
         {
-            get { return _latitude; }
+            get { return positionGPS.Latitude; }
             set
             {
-                if (_latitude != value)
+                if (positionGPS.Latitude != value)
                 {
-                    _latitude = value;
+                    positionGPS.Latitude = value;
                     OnPropertyChange("Latitude");
                     OnPropertyChange("Information");
 
                 }
             }
         }
-        public float Longitude
+        public double Longitude
         {
-            get { return _lonitude; }
+            get { return positionGPS.Longitud; }
             set
             {
-                if (_lonitude != value)
+                if (positionGPS.Longitud != value)
                 {
-                    _lonitude = value;
+                    positionGPS.Longitud = value;
                     OnPropertyChange("Longitude");
                     OnPropertyChange("Information");
 
@@ -39,12 +38,12 @@ namespace WPFPositionGPS.ViewModels
 
         public int Rayon
         {
-            get { return _rayon; }
+            get { return positionGPS.Rayon; }
             set
             {
-                if (_rayon != value)
+                if (positionGPS.Rayon != value)
                 {
-                    _rayon = value;
+                    positionGPS.Rayon = value;
                     OnPropertyChange("Rayon");
                     OnPropertyChange("Information");
 
@@ -54,13 +53,28 @@ namespace WPFPositionGPS.ViewModels
 
         public string Information
         {
-            get { return Latitude + " " + Longitude; }
+            get { return Latitude + " " + Longitude + " " + Rayon; }
+        }
+
+        public ViewModelPositionGPS()
+        {
+            positionGPS = new PositionGPS
+            {
+                Latitude = 5.731358767949209,
+                Longitud = 45.18457681950622,
+                Rayon = 400,
+
+            };
+           
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChange(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
     }
