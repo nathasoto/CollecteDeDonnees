@@ -14,7 +14,7 @@ using WPFPositionGPS.Models;
 
 namespace WPFPositionGPS.ViewModels
 {
-   
+
 
     public class ViewModelPositionGPS : INotifyPropertyChanged
     {
@@ -22,9 +22,9 @@ namespace WPFPositionGPS.ViewModels
         private DonneLibrary donneLibrary = new DonneLibrary();
 
         private ObservableCollection<LineDonne> _lines = new ObservableCollection<LineDonne>();
-        public ObservableCollection<LineDonne> Lines { 
+        public ObservableCollection<LineDonne> Lines {
             get { return _lines; }
-            set { _lines = value; } 
+            set { _lines = value; }
         }
 
         public double Latitude
@@ -32,7 +32,8 @@ namespace WPFPositionGPS.ViewModels
             get { return positionGPS.Latitude; }
             set
             {
-                if (positionGPS.Latitude != value)
+                 
+                if(positionGPS.Latitude != value )
                 {
                     positionGPS.Latitude = value;
                     OnPropertyChange("Latitude");
@@ -61,7 +62,7 @@ namespace WPFPositionGPS.ViewModels
             get { return positionGPS.Rayon; }
             set
             {
-                if (positionGPS.Rayon != value)
+                if (positionGPS.Rayon != value )
                 {
                     positionGPS.Rayon = value;
                     OnPropertyChange("Rayon");
@@ -86,15 +87,15 @@ namespace WPFPositionGPS.ViewModels
             }
         }
 
-        
+
 
         private ICommand _findLines;
-        
+
         public ICommand FindLines
         {
             get => _findLines ?? (_findLines = new RelayCommand(o =>
             {
-               
+
                 GetCoordinates();
                 Visibility = Visibility.Visible;
                 OnPropertyChange("Information");
@@ -105,31 +106,40 @@ namespace WPFPositionGPS.ViewModels
 
         public string Information
         {
-            get { return Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture) + " - " + Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) + " - " + Rayon; }
+            get { return  "Longitud : " + Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) + "     Latitude : " + Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture) + "    Rayon : " + Rayon; }
         }
 
         private void GetCoordinates()
         {
-           
-            List<LineDonne> lineDonnes = donneLibrary.FindLines(Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Rayon.ToString());
-            
-            foreach (LineDonne lineDonne in lineDonnes)
+            if (Latitude != 0 && Longitude != 0 && Rayon !=0)
             {
-                
-                _lines.Add(lineDonne);
-                Console.WriteLine(_lines.Count) ;
-            }
+                List<LineDonne> lineDonnes = donneLibrary.FindLines(Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), Rayon.ToString());
+                Lines.Clear();
+                foreach (LineDonne lineDonne in lineDonnes)
+                {
+                    _lines.Add(lineDonne);
 
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("cannot be zero");
+            } 
 
         }
-
+        
+     
         public ViewModelPositionGPS()
         {
             positionGPS = new PositionGPS
             {
                 
-
             };
+   
+            Longitude = 5.731358767949209;
+            Latitude = 45.18457681950622;
+            Rayon = 400;
 
         }
 

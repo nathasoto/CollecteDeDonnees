@@ -40,26 +40,12 @@ namespace LibraryDonnesAPI
         }
         public List<LineDonne> FindLines(String lat, String lon, String radio)
         {
-            String url = $"http://data.mobilites-m.fr/api/linesNear/json?x={lat}&y={lon}&dist={radio}&details={"true"}";
 
+            
+            String url = $"http://data.mobilites-m.fr/api/linesNear/json?x={lat}&y={lon}&dist={radio}&details={"true"}";
             return GetWebDonne(url);
 
-            //foreach (LineDonne lineDonne in GetWebDonne(url))
-            //{
-            //    Console.WriteLine("Id: {0}", lineDonne.id);
-            //    Console.WriteLine("Name: {0}", lineDonne.name);
-            //    Console.WriteLine("Longitud: {0}", lineDonne.lon);
-            //    Console.WriteLine("Latitude: {0}", lineDonne.lat);
-            //    Console.WriteLine("Zone: {0}", lineDonne.zone);
 
-            //    foreach (String lines in lineDonne.lines)
-            //    {
-            //        Console.WriteLine("Line: {0}", lines);
-            //    }
-
-            //    Console.WriteLine("\n");
-
-            //}
 
         }
 

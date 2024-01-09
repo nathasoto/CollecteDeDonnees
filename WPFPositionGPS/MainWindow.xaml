@@ -16,35 +16,42 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" TileMode="None"/>
+            <ImageBrush Stretch="UniformToFill" TileMode="None" ImageSource="/Capture d'écran Metro.png"/>
         </Grid.Background>
 
-        <TextBlock x:Name="TextLines" HorizontalAlignment="Left" Margin="173,60,0,0" TextWrapping="Wrap" Text="{Binding Lines}" VerticalAlignment="Top" Visibility="{Binding Visibility}"/>
-
-        <Label Content="Latitude" HorizontalAlignment="Left" Margin="109,149,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="195,162,0,0" TextWrapping="Wrap" Text="{Binding Latitude, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-
-        <Label Content="Longitude" HorizontalAlignment="Left" Margin="109,207,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="195,207,0,0" TextWrapping="Wrap" Text="{Binding Longitude, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-
-        <Label Content="Rayon" HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="195,258,0,0" TextWrapping="Wrap" Text="{Binding Rayon, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-
-        <TextBlock x:Name="TextInformation" HorizontalAlignment="Left" Margin="173,60,0,0" TextWrapping="Wrap" Text="{Binding Information}" VerticalAlignment="Top" Visibility="{Binding Visibility}"/>
 
 
-        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="255,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Command="{Binding FindLines}"/>
+       
+
+        <Label Content="Longitude" HorizontalAlignment="Left" Margin="124,75,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" Foreground="#FFF7F3F3"/>
+        <TextBox HorizontalAlignment="Left" Margin="204,79,0,0" TextWrapping="Wrap" Text="{Binding Longitude, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="488"/>
+
+        <Label Content="Latitude" HorizontalAlignment="Left" Margin="124,125,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" Background="#00000000" Foreground="#FFF9F0F0"/>
+        <TextBox HorizontalAlignment="Left" Margin="204,129,0,0" TextWrapping="Wrap" Text="{Binding Latitude, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="488"/>
+
+        <Label Content="Rayon" HorizontalAlignment="Left" Margin="124,174,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" Foreground="#FFF7EFEF"/>
+        <TextBox HorizontalAlignment="Left" Margin="204,174,0,0" TextWrapping="Wrap" Text="{Binding Rayon, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="488"/>
+
+        <TextBlock x:Name="TextInformation" HorizontalAlignment="Left" Margin="113,288,0,0" TextWrapping="Wrap" Text="{Binding Information}" VerticalAlignment="Top" Visibility="{Binding Visibility}" Width="579" FontFamily="Comic Sans MS" Foreground="#FFFBF0F0"/>
 
 
-        <ListView Name="listBus" ItemsSource="{Binding Lines}" Grid.Row="0" Grid.ColumnSpan="10" Margin="0,393,0,61" RenderTransformOrigin="0.5,0.5">
-            <ListView.View>
-                <GridView>
+        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="604,223,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,3.657" Command="{Binding FindLines}" FontFamily="Comic Sans MS" Width="88" Height="34"/>
+
+
+        <ListView Name="listBus" ItemsSource="{Binding Lines}" Grid.Row="0" Margin="64,338,58,81" RenderTransformOrigin="0.5,0.5" FontFamily="Comic Sans MS" >
+            <ListView.View >
+                <GridView >
                     <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding name}" />
-                    <GridViewColumn Header="id" Width="70" DisplayMemberBinding="{Binding id}" />
-                    <GridViewColumn Header="longitude" Width="100" DisplayMemberBinding="{Binding lon}" />
-                    <GridViewColumn Header="latitude" Width="100" DisplayMemberBinding="{Binding lat}" />
-                    <GridViewColumn Header="zone" Width="100" DisplayMemberBinding="{Binding zone}" />
-                    <GridViewColumn Header="lignes" Width="100" DisplayMemberBinding="{Binding lines}" />
+                    <GridViewColumn Header="Id" Width="70" DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="Longitude" Width="100" DisplayMemberBinding="{Binding lon}" />
+                    <GridViewColumn Header="Latitude" Width="100" DisplayMemberBinding="{Binding lat}" />
+                    <GridViewColumn Header="Zone" Width="100" DisplayMemberBinding="{Binding zone}" />
+
+                    <GridViewColumn Header="Lignes1" Width="100" DisplayMemberBinding="{Binding lines[0]}" />
+                    <GridViewColumn Header="Lignes2" Width="100" DisplayMemberBinding="{Binding lines[1]}" />
+                    <GridViewColumn Header="Lignes3" Width="100" DisplayMemberBinding="{Binding lines[2]}" />
+                    <GridViewColumn Header="Lignes4" Width="100" DisplayMemberBinding="{Binding lines[3]}" />
+                    <GridViewColumn Header="Lignes5" Width="100" DisplayMemberBinding="{Binding lines[4]}" />
 
                 </GridView>
             </ListView.View>
