@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
+using System.Runtime.CompilerServices;
 
 namespace LibraryDonnesAPI
 {
@@ -32,9 +33,10 @@ namespace LibraryDonnesAPI
 
             String json_string = _request.doRequest(URL);
 
-            List <LineDonne> data = JsonConvert.DeserializeObject<List<LineDonne>>(json_string);
+            //List <LineDonne> data = JsonConvert.DeserializeObject<List<LineDonne>>(json_string);
 
-            return data;
+            //return data;
+            return json_string.ToLineDonneeList();
 
 
         }
@@ -49,5 +51,13 @@ namespace LibraryDonnesAPI
 
         }
 
+    }
+
+    static class ResponseDeserialize
+    {
+        public static List<LineDonne> ToLineDonneeList(this string response)
+        {
+            return JsonConvert.DeserializeObject<List<LineDonne>>(response);
+        }
     }
 }
